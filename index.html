@@ -28,7 +28,7 @@
   </head>
   <body>
 			
-			<div class="main" >
+			<div class="main parallax-window" data-parallax="scroll" data-image-src="img/main-bg.jpg" >
 			<div class="main-overlay"></div>
 				<div class="wrapper">
 					<div class="main-header">
@@ -118,7 +118,19 @@
     		});
     	});
     </script>
-    
+    <script>
+    	$(document).ready(function() {
+            //навигация - плавный скроллинг к якорю
+            $(".slowly").on("click", function (event) {
+                //отменяем стандартную обработку нажатия по ссылке
+                event.preventDefault();
+                //забираем идентификатор бока с атрибута href
+                var id  = $(this).attr('href'),
+                //узнаем высоту от начала страницы до блока на который ссылается якорь
+                    top = $(id).offset().top;
+                //анимируем переход на расстояние - top за 1500 мс
+                $('body,html').animate({scrollTop: top}, 800);
+            });
 });
     	
     	
